@@ -1,0 +1,27 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+
+spring:
+  application:
+    name: SEARCH-PORTAL
+
+server:
+  port: 9092
+
+hystrix:
+  command:
+    searchmanagement:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+      circuitBreaker:
+        errorThresholdPercentage: 20
+        sleepWindowInMilliseconds: 5000
+        requestVolumeThreshold: 10
